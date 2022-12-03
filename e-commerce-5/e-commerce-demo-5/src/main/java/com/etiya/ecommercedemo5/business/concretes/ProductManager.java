@@ -10,8 +10,11 @@ import java.util.List;
 @Service
 //allconstractor
 public class ProductManager implements ProductService {
+
+
     private ProductRepository productRepository;
-@Autowired
+
+    @Autowired
 //spring ioc
     public ProductManager(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -26,4 +29,11 @@ public class ProductManager implements ProductService {
     public Product getById(int id) {
         return productRepository.findById(id).orElseThrow();
     }
+
+    @Override
+    public List<Product> findAllProducstsByGreaterThanStock(int stock) {
+        return productRepository.findAllProducstsByStockGreaterThanOrderByStockDesc(stock);
+    }
+
+
 }

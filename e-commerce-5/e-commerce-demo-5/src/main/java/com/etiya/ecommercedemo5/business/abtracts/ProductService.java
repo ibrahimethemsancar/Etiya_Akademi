@@ -9,4 +9,6 @@ import java.util.List;
 public interface ProductService {
     List<Product> getAll();
     Product getById(int id);
+    List<Product> findAllProducstsByGreaterThanStock(int stock);
+
 }
